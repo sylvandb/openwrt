@@ -41,7 +41,7 @@ config GCC_DEFAULT_PIE
 	bool
 	prompt "Build executable with PIE enabled by default" if TOOLCHAINOPTS
 	depends on !GCC_USE_VERSION_5
-	default n
+	default y if !GCC_USE_VERSION_5
 	help
 	    Use gcc configure option --enable-default-pie to turn on -fPIE and -pie by default.
 
@@ -49,7 +49,7 @@ config GCC_DEFAULT_SSP
 	bool
 	prompt "Build executable with Stack-Smashing Protection enabled by default" if TOOLCHAINOPTS
 	depends on !GCC_USE_VERSION_4_8
-	default n
+	default y if !GCC_USE_VERSION_4_8
 	help
 	    Use gcc configure option --enable-default-ssp to turn on -fstack-protector-strong by default.
 
