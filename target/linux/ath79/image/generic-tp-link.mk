@@ -1,5 +1,16 @@
 include ./common-tp-link.mk
 
+define Device/tplink_eap245-v1
+  #Use base format
+  ATH_SOC := qca9563
+  DEVICE_TITLE := TP-LINK EAP245 v1
+  LOADER_TYPE := elf
+  IMAGE_SIZE := 15872k
+  DEVICE_PACKAGES := kmod-ath9k kmod-ath10k ath10k-firmware-qca988x
+  SUPPORTED_DEVICES := tplink,eap245-v1 eap245-v1
+endef
+TARGET_DEVICES += tplink_eap245-v1
+
 define Device/tplink_archer-c7-v1
   $(Device/tplink-8mlzma)
   ATH_SOC := qca9558
