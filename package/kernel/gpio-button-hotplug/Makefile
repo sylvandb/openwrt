@@ -32,13 +32,10 @@ define KernelPackage/gpio-button-hotplug/description
  an overkill for OpenWrt simple needs.
 endef
 
-MAKE_OPTS:= \
-	$(KERNEL_MAKE_FLAGS) \
-	SUBDIRS="$(PKG_BUILD_DIR)"
-
 define Build/Compile
-	$(MAKE) -C "$(LINUX_DIR)" \
-		$(MAKE_OPTS) \
+	$(MAKE) $(KERNEL_MAKEOPTS) \
+		EXTRA_CFLAGS="$(IREMAP_CFLAGS)" \
+		SUBDIRS="$(PKG_BUILD_DIR)" \
 		modules
 endef
 
